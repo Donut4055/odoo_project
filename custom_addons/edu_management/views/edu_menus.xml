@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Main Menu -->
+        <menuitem id="menu_education_root" name="Đào tạo" sequence="10"/>
+
+        <!-- Sub Menus -->
+        <menuitem id="menu_education_courses" name="Khóa học" 
+                  parent="menu_education_root" sequence="10"
+                  action="action_edu_course"/>
+
+        <menuitem id="menu_education_sessions" name="Lớp học" 
+                  parent="menu_education_root" sequence="20"
+                  action="action_edu_session"/>
+
+        <menuitem id="menu_education_config" name="Cấu hình" 
+                  parent="menu_education_root" sequence="100"/>
+
+        <menuitem id="menu_education_subjects" name="Môn học" 
+                  parent="menu_education_config" sequence="10"
+                  action="action_edu_subject"/>
+
+        <menuitem id="menu_education_classrooms" name="Phòng học" 
+                  parent="menu_education_config" sequence="20"
+                  action="action_edu_classroom"/>
+    </data>
+</odoo>

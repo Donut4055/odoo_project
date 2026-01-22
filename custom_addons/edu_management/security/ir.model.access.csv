@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_edu_course_user,access_edu_course_user,model_edu_course,group_edu_user,1,1,1,0
+access_edu_course_manager,access_edu_course_manager,model_edu_course,group_edu_manager,1,1,1,1
+access_edu_subject_user,access_edu_subject_user,model_edu_subject,group_edu_user,1,0,0,0
+access_edu_subject_manager,access_edu_subject_manager,model_edu_subject,group_edu_manager,1,1,1,1
+access_edu_session_user,access_edu_session_user,model_edu_session,group_edu_user,1,1,1,0
+access_edu_session_manager,access_edu_session_manager,model_edu_session,group_edu_manager,1,1,1,1
+access_edu_classroom_user,access_edu_classroom_user,model_edu_classroom,group_edu_user,1,0,0,0
+access_edu_classroom_manager,access_edu_classroom_manager,model_edu_classroom,group_edu_manager,1,1,1,1

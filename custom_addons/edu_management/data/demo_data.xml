@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Demo Subjects -->
+        <record id="subject_math" model="edu.subject">
+            <field name="name">Toán học</field>
+            <field name="code">MATH</field>
+            <field name="description">Môn toán học cơ bản và nâng cao</field>
+        </record>
+
+        <record id="subject_physics" model="edu.subject">
+            <field name="name">Vật lý</field>
+            <field name="code">PHYS</field>
+            <field name="description">Môn vật lý đại cương</field>
+        </record>
+
+        <record id="subject_chemistry" model="edu.subject">
+            <field name="name">Hóa học</field>
+            <field name="code">CHEM</field>
+            <field name="description">Môn hóa học cơ bản</field>
+        </record>
+
+        <record id="subject_english" model="edu.subject">
+            <field name="name">Tiếng Anh</field>
+            <field name="code">ENG</field>
+            <field name="description">Tiếng Anh giao tiếp và học thuật</field>
+        </record>
+
+        <!-- Demo Classrooms -->
+        <record id="classroom_a101" model="edu.classroom">
+            <field name="name">A101</field>
+            <field name="capacity">30</field>
+        </record>
+
+        <record id="classroom_a102" model="edu.classroom">
+            <field name="name">A102</field>
+            <field name="capacity">40</field>
+        </record>
+
+        <record id="classroom_b201" model="edu.classroom">
+            <field name="name">B201</field>
+            <field name="capacity">35</field>
+        </record>
+
+        <record id="classroom_b202" model="edu.classroom">
+            <field name="name">B202</field>
+            <field name="capacity">25</field>
+        </record>
+
+        <!-- Demo Instructors (Partners) -->
+        <record id="instructor_nguyen_van_a" model="res.partner">
+            <field name="name">Nguyễn Văn A</field>
+            <field name="email">nguyenvana@example.com</field>
+            <field name="phone">0901234567</field>
+            <field name="is_instructor">True</field>
+        </record>
+
+        <record id="instructor_tran_thi_b" model="res.partner">
+            <field name="name">Trần Thị B</field>
+            <field name="email">tranthib@example.com</field>
+            <field name="phone">0902345678</field>
+            <field name="is_instructor">True</field>
+        </record>
+
+        <record id="instructor_le_van_c" model="res.partner">
+            <field name="name">Lê Văn C</field>
+            <field name="email">levanc@example.com</field>
+            <field name="phone">0903456789</field>
+            <field name="is_instructor">True</field>
+        </record>
+
+        <!-- Demo Students (Partners) -->
+        <record id="student_pham_thi_d" model="res.partner">
+            <field name="name">Phạm Thị D</field>
+            <field name="email">phamthid@example.com</field>
+            <field name="phone">0904567890</field>
+            <field name="is_instructor">False</field>
+        </record>
+
+        <record id="student_hoang_van_e" model="res.partner">
+            <field name="name">Hoàng Văn E</field>
+            <field name="email">hoangvane@example.com</field>
+            <field name="phone">0905678901</field>
+            <field name="is_instructor">False</field>
+        </record>
+
+        <record id="student_vo_thi_f" model="res.partner">
+            <field name="name">Võ Thị F</field>
+            <field name="email">vothif@example.com</field>
+            <field name="phone">0906789012</field>
+            <field name="is_instructor">False</field>
+        </record>
+
+        <!-- Demo Products -->
+        <record id="product_math_basic" model="product.product">
+            <field name="name">Khóa học Toán cơ bản</field>
+            <field name="list_price">1500000</field>
+            <field name="type">service</field>
+        </record>
+
+        <record id="product_physics_advanced" model="product.product">
+            <field name="name">Khóa học Vật lý nâng cao</field>
+            <field name="list_price">2000000</field>
+            <field name="type">service</field>
+        </record>
+
+        <record id="product_english_basic" model="product.product">
+            <field name="name">Khóa học Tiếng Anh cơ bản</field>
+            <field name="list_price">1800000</field>
+            <field name="type">service</field>
+        </record>
+
+        <!-- Demo Courses -->
+        <record id="course_math_basic" model="edu.course">
+            <field name="name">Toán học cơ bản</field>
+            <field name="subject_id" ref="subject_math"/>
+            <field name="level">beginner</field>
+            <field name="responsible_id" ref="instructor_nguyen_van_a"/>
+            <field name="description">Khóa học toán cơ bản dành cho học sinh THCS</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="course_physics_advanced" model="edu.course">
+            <field name="name">Vật lý nâng cao</field>
+            <field name="subject_id" ref="subject_physics"/>
+            <field name="level">advanced</field>
+            <field name="responsible_id" ref="instructor_tran_thi_b"/>
+            <field name="description">Khóa học vật lý nâng cao cho học sinh THPT</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="course_english_intermediate" model="edu.course">
+            <field name="name">Tiếng Anh trung cấp</field>
+            <field name="subject_id" ref="subject_english"/>
+            <field name="level">intermediate</field>
+            <field name="responsible_id" ref="instructor_le_van_c"/>
+            <field name="description">Khóa học tiếng Anh giao tiếp trung cấp</field>
+            <field name="active">True</field>
+        </record>
+
+        <!-- Demo Sessions -->
+        <record id="session_math_001" model="edu.session">
+            <field name="name">Lớp Toán cơ bản K1</field>
+            <field name="course_id" ref="course_math_basic"/>
+            <field name="instructor_id" ref="instructor_nguyen_van_a"/>
+            <field name="start_date" eval="(datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d')"/>
+            <field name="duration">30</field>
+            <field name="seats">30</field>
+            <field name="classroom_id" ref="classroom_a101"/>
+            <field name="product_id" ref="product_math_basic"/>
+            <field name="state">draft</field>
+            <field name="attendee_ids" eval="[(6, 0, [ref('student_pham_thi_d'), ref('student_hoang_van_e')])]"/>
+        </record>
+
+        <record id="session_physics_001" model="edu.session">
+            <field name="name">Lớp Vật lý nâng cao K1</field>
+            <field name="course_id" ref="course_physics_advanced"/>
+            <field name="instructor_id" ref="instructor_tran_thi_b"/>
+            <field name="start_date" eval="(datetime.now() + timedelta(days=14)).strftime('%Y-%m-%d')"/>
+            <field name="duration">45</field>
+            <field name="seats">25</field>
+            <field name="classroom_id" ref="classroom_b201"/>
+            <field name="product_id" ref="product_physics_advanced"/>
+            <field name="state">draft</field>
+            <field name="attendee_ids" eval="[(6, 0, [ref('student_vo_thi_f')])]"/>
+        </record>
+
+        <record id="session_english_001" model="edu.session">
+            <field name="name">Lớp Tiếng Anh trung cấp K1</field>
+            <field name="course_id" ref="course_english_intermediate"/>
+            <field name="instructor_id" ref="instructor_le_van_c"/>
+            <field name="start_date" eval="(datetime.now() + timedelta(days=3)).strftime('%Y-%m-%d')"/>
+            <field name="duration">60</field>
+            <field name="seats">35</field>
+            <field name="classroom_id" ref="classroom_a102"/>
+            <field name="product_id" ref="product_english_basic"/>
+            <field name="state">open</field>
+            <field name="attendee_ids" eval="[(6, 0, [ref('student_pham_thi_d'), ref('student_hoang_van_e'), ref('student_vo_thi_f')])]"/>
+        </record>
+
+    </data>
+</odoo>

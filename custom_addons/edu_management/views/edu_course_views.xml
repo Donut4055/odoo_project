@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View -->
+        <record id="view_edu_course_form" model="ir.ui.view">
+            <field name="name">edu.course.form</field>
+            <field name="model">edu.course</field>
+            <field name="arch" type="xml">
+                <form string="Khóa học">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="%(action_edu_session)d" type="action"
+                                    class="oe_stat_button" icon="fa-calendar">
+                                <field name="session_count" widget="statinfo" string="Lớp học"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="subject_id"/>
+                                <field name="level"/>
+                            </group>
+                            <group>
+                                <field name="responsible_id"/>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Thông tin chung">
+                                <field name="description"/>
+                            </page>
+                            <page string="Danh sách lớp">
+                                <field name="session_ids">
+                                    <tree>
+                                        <field name="code"/>
+                                        <field name="name"/>
+                                        <field name="start_date"/>
+                                        <field name="duration"/>
+                                        <field name="seats"/>
+                                        <field name="taken_seats" widget="progressbar"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View -->
+        <record id="view_edu_course_tree" model="ir.ui.view">
+            <field name="name">edu.course.tree</field>
+            <field name="model">edu.course</field>
+            <field name="arch" type="xml">
+                <tree string="Khóa học">
+                    <field name="name"/>
+                    <field name="subject_id"/>
+                    <field name="level"/>
+                    <field name="responsible_id"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_edu_course_search" model="ir.ui.view">
+            <field name="name">edu.course.search</field>
+            <field name="model">edu.course</field>
+            <field name="arch" type="xml">
+                <search string="Tìm kiếm khóa học">
+                    <field name="name"/>
+                    <field name="responsible_id"/>
+                    <filter string="Khóa học đang đóng" name="inactive" domain="[('active', '=', False)]"/>
+                    <group expand="0" string="Nhóm theo">
+                        <filter string="Môn học" name="subject" context="{'group_by': 'subject_id'}"/>
+                        <filter string="Cấp độ" name="level" context="{'group_by': 'level'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_edu_course" model="ir.actions.act_window">
+            <field name="name">Khóa học</field>
+            <field name="res_model">edu.course</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
